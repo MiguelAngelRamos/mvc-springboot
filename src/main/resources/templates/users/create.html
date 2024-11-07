@@ -11,16 +11,28 @@
   <div class="container">
    <!-- h1.text-center -->
     <h1 class="text-center">Crear Usuarios</h1>
-      <form th:action="@{/users}" method="post">
+      <form th:action="@{/users}" method="post" th:object="${user}">
 
         <div class="mb-3">
           <label for="name" class="form-label">Nombre: </label>
-          <input type="text" class="form-control" id="name" placeholder="Escriba su nombre de usuario">
+          <input 
+            type="text" 
+            class="form-control" 
+            id="name" 
+            placeholder="Escriba su nombre de usuario"
+            th:field="*{name}"
+          />
         </div>
 
         <div class="mb-3">
           <label for="email" class="form-label">Email: </label>
-          <input type="email" class="form-control" id="email" placeholder="Escriba su email">
+          <input 
+            type="email" 
+            class="form-control" 
+            id="email" 
+            placeholder="Escriba su email"
+            th:field="*{email}"
+            />
         </div>
 
         <button type="submit" class="btn btn-success">Guardar</button>
