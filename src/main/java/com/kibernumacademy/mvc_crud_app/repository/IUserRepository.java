@@ -7,6 +7,6 @@ import com.kibernumacademy.mvc_crud_app.model.User;
 
 @Repository
 public interface IUserRepository extends JpaRepository<User, Long> {
-  // la necesidad de crear metododos personalizados.
-
+  // la necesidad de crear metodos personalizados.
+ // select  call("nombre")
 } 
