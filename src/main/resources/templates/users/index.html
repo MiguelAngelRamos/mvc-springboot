@@ -27,11 +27,16 @@
 
      <!-- tbody>tr>td*4 --> 
      <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr th:each="user: ${users}">
+        <td th:text="${user.id}"></td>
+        <!-- control + k + c -->
+        <!-- <td th:text="${user.name + '-' +  user.email}"></td> -->
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+          <a th:href="@{/users/edit/{id}(id=${user.id})}" class="btn btn-warning btn-sm">Editar</a>
+          <a th:href="@{/users/delete/{id}(id=${user.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+        </td>
       </tr>
      </tbody>
     </table>

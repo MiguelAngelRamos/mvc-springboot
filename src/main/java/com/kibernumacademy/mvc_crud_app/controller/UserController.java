@@ -39,7 +39,7 @@ public class UserController {
   @PostMapping
   public String createUser(@ModelAttribute("user") User user) {
     userService.createUser(user);
-    return "redirect:/users";
+    return "redirect:/users"; // hacia pagina principal, para ver al usuario creado
   }
 
   @GetMapping("/edit/{id}") // localhost:8080/users/edit/1
@@ -57,7 +57,7 @@ public class UserController {
   @GetMapping("/delete/{id}")
   public String deleteUser(@PathVariable Long id) {
     userService.deleteUser(id);
-    return "redirect/users";
+    return "redirect:/users";
   }
 
 
