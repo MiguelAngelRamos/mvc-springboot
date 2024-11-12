@@ -30,6 +30,7 @@ public class UserRestController {
     return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
   }
 
+  @GetMapping("/{id}")
   public ResponseEntity<User> getUserById(@PathVariable Long id) {
     User user = userService.getUserById(id);
     return user != null ? new ResponseEntity<>(user, HttpStatus.OK): new ResponseEntity<>(HttpStatus.NOT_FOUND);
