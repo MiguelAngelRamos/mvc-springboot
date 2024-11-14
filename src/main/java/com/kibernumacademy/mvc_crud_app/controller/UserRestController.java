@@ -38,6 +38,16 @@ public class UserRestController {
     } catch(IllegalArgumentException e ) {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-  
   }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+    try {
+      User updateUser =  userService.updateUser(id, user);
+      return new ResponseEntity<>(updateUser, HttpStatus.OK);
+    } catch (Exception e) {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
+
 }
