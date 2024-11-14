@@ -43,7 +43,6 @@ public class UserService {
 
   // Eliminacion
   public void deleteUser(Long id) {
-    userRepository.existsById(id); // verdadero si encuentra al usuario y falso si no lo encuenta
     if(!userRepository.existsById(id)) {
       throw new IllegalArgumentException("User not found");
     }
