@@ -32,9 +32,12 @@ public class UserRestController {
 
   @GetMapping("/{id}")
   public ResponseEntity<User> getUserById(@PathVariable Long id) {
-    User user = userService.getUserById(id);
-    return user != null ? new ResponseEntity<>(user, HttpStatus.OK): new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    try {
+      User user = userService.getUserById(id);
+      return new ResponseEntity<>(user, HttpStatus.OK);
+    } catch(IllegalArgumentException e ) {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  
   }
-
-
 }

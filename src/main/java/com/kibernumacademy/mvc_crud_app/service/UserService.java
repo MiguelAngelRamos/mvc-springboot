@@ -36,17 +36,17 @@ public class UserService {
   // Actualizacion del usuario
   public User updateUser(Long id, User user) {
     User existingUser = getUserById(id); // Verificamos si el usuario existe
-    
-    if(existingUser != null) {
-      existingUser.setName(user.getName());
-      existingUser.setEmail(user.getEmail());
-      return userRepository.save(existingUser);
-    }
-    return null;
+    existingUser.setName(user.getName());
+    existingUser.setEmail(user.getEmail());
+    return userRepository.save(existingUser);
   }
 
   // Eliminacion
   public void deleteUser(Long id) {
+    userRepository.existsById(id); // verdadero si encuentra al usuario y falso si no lo encuenta
+    if(!userRepository.existsById(id)) {
+      throw new IllegalArgumentException("User not found");
+    }
     userRepository.deleteById(id);
   }
 
